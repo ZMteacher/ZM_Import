@@ -1,0 +1,7 @@
+{
+  "name": "com.zm.import",
+  "version": "1.0.0",
+  "displayName": "ZMImport",
+  "description": "import zm framework tools",
+  "unity": "2019.1" // 最低支持的Unity版本
+}
