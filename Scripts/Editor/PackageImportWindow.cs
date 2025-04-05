@@ -19,6 +19,8 @@ using UnityEngine.UIElements;
 
 public class PackageImportWindow : EditorWindow
 {
+    private string m_TexturePath = "Packages/com.zm.import/Editor Resources/";
+    private string m_PackagePath = "Packages/com.zm.import/Package Resources/";
     private Vector2 scrollPosition;
     private List<PackageItem> packageItems = new List<PackageItem>();
     private Texture2D defaultButtonTexture;
@@ -27,7 +29,6 @@ public class PackageImportWindow : EditorWindow
     [MenuItem("Window/Package Import Window")]
     public static void ShowWindow()
     {
-        // GetWindow<PackageImportWindow1>("Package Importer");
         GetWindowWithRect<PackageImportWindow>(new Rect(0, 0, 1000, 900));
     }
 
@@ -51,31 +52,31 @@ public class PackageImportWindow : EditorWindow
         // 示例数据 - 实际应用中可以从配置文件或API加载
         packageItems.Add(new PackageItem(
             "UI框架 ZMUIFrameWork",
-            LoadTexture("Assets/Editor Resources/ZMUI.jpg"),
+            LoadTexture($"{m_TexturePath}/ZMUI.jpg"),
             "ZMUI经过百万DAU验证过的一款Mono分离式，高性能、自动化、商业级UI框架UI框架。从底层解决性能问题代码一键生成、组件一键绑定、事件自动监听、彻底解放双手，提升50%开发效率."
         ));
 
         packageItems.Add(new PackageItem(
             "资源热更框架 ZMAsset",
-            LoadTexture("Assets/Editor Resources/ZMAsset.jpg"),
+            LoadTexture($"{m_TexturePath}/ZMAsset.jpg"),
             "ZMAsset是一款多模块、多线程、资源热更管理框架。无需编写代码，即可轻松实现资源热更及资源加载,包含：可视化多模块打包器、多模块热更、多线程下载、多版本热更、多版本回退加密、解密、内嵌、解压、内存引用计数、大型对象池、AssetBundle加载、Editor加载"
         ));
 
         packageItems.Add(new PackageItem(
             "游戏框架 DMVC",
-            LoadTexture("Assets/Editor Resources/DMVC.jpg"),
+            LoadTexture($"{m_TexturePath}/DMVC.jpg"),
             "DMVC是一款基于MVC思想设计的智能化、多世界、多模块的解耦游戏框架,与HyBridCLR多程序集设计超级适配的游戏框架，大道至简.数据层、逻辑层、网络层，最好配合ZMUI使用."
         ));
         
         packageItems.Add(new PackageItem(
             "日志插件 DebugerTookit",
-            LoadTexture("Assets/Editor Resources/Debuger.jpg"),
+            LoadTexture($"{m_TexturePath}/Debuger.jpg"),
             "该插件是一款超级完善的日志系统，包含子线程本地日志文件写入、自定义颜色日志，移动设备日志查看工具、FPS实时显示、DLL日志编译时剔除、ProtoBuff转Json字符串打印日志、日志重定向.."
         ));
         
         packageItems.Add(new PackageItem(
             "ZMUGUIPro",
-            LoadTexture("Assets/Editor Resources/ZMUGUIPro.jpg"),
+            LoadTexture($"{m_TexturePath}/ZMUGUIPro.jpg"),
             "该插件是一款UGUI拓展插件、包含：超高性能描边、高性能裁剪、文本多语言、图片多语言、按钮长按事件、按钮双击事件、点击缩放、点击音效等.."
         ));
     }
