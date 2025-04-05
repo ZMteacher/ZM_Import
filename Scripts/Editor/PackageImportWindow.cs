@@ -38,9 +38,6 @@ public class PackageImportWindow : EditorWindow
         defaultButtonTexture = new Texture2D(1, 1);
         defaultButtonTexture.SetPixel(0, 0, new Color(0.3f, 0.3f, 0.3f));
         defaultButtonTexture.Apply();
-        
-      
-        
         // 初始化示例数据
         InitializePackageItems();
     }
@@ -78,6 +75,12 @@ public class PackageImportWindow : EditorWindow
             "ZMUGUIPro",
             LoadTexture($"{m_TexturePath}/ZMUGUIPro.jpg"),
             "该插件是一款UGUI拓展插件、包含：超高性能描边、高性能裁剪、文本多语言、图片多语言、按钮长按事件、按钮双击事件、点击缩放、点击音效等.."
+        ));
+        
+        packageItems.Add(new PackageItem(
+            "更多功能",
+            LoadTexture($"{m_TexturePath}/ComingSoon.jpg"),
+            "更多功能和实战案例正在制作中,点击上方图片查看详情信息..."
         ));
     }
 
@@ -148,7 +151,7 @@ public class PackageImportWindow : EditorWindow
         {
             Debug.Log($"Clicked on {item.Title}");
             // 这里可以添加按钮点击逻辑
-            OnImportButtonClick(item);
+            OnTextureButtonClick(item);
         }
   
         GUILayout.Space(10);
@@ -161,12 +164,11 @@ public class PackageImportWindow : EditorWindow
         // 导入按钮
         if (GUILayout.Button("Import", GUILayout.Height(30)))
         {
-            if (EditorUtility.DisplayDialog("Import Package", 
-                $"Are you sure you want to import {item.Title}?", 
-                "Import", "Cancel"))
+            if (EditorUtility.DisplayDialog("Import Package", $"Are you sure you want to import {item.Title}?", "Import", "Cancel"))
             {
                 Debug.Log($"Importing {item.Title}");
                 // 这里添加实际的导入逻辑
+                OnImportButtonClick(item);
             }
         }
 
@@ -181,11 +183,11 @@ public class PackageImportWindow : EditorWindow
         }
         else if (item.Title == "资源热更框架 ZMAsset")
         {
-            
+            AssetDatabase.ImportPackage($"{m_PackagePath}/ZMAsset.unitypackage", true);
         }
         else if (item.Title == "游戏框架 DMVC")
         {
-            
+            AssetDatabase.ImportPackage($"{m_PackagePath}/ZMGC.unitypackage", true);
         }
         else if (item.Title == "日志插件 DebugerTookit")
         {
@@ -193,10 +195,40 @@ public class PackageImportWindow : EditorWindow
         }
         else if (item.Title == "ZMUGUIPro")
         {
-            
+            AssetDatabase.ImportPackage($"{m_PackagePath}/ZMUGUIPro.unitypackage", true);
+        }
+        else if (item.Title == "更多功能")
+        {
+            Application.OpenURL("https://www.yxtown.com/user/38633b977fadc0db8e56483c8ee365a2cafbe96b");
         }
     }
-
+    private void OnTextureButtonClick(PackageItem item)
+    {
+        if (item.Title == "UI框架 ZMUIFrameWork")
+        {
+            Application.OpenURL("https://github.com/ZMteacher/ZMUIFrameWork");
+        }
+        else if (item.Title == "资源热更框架 ZMAsset")
+        {
+            Application.OpenURL("https://github.com/ZMteacher/ZMAsset");
+        }
+        else if (item.Title == "游戏框架 DMVC")
+        {
+            Application.OpenURL("https://github.com/ZMteacher/ZMGC");
+        }
+        else if (item.Title == "日志插件 DebugerTookit")
+        {
+            Application.OpenURL("https://github.com/ZMteacher/DebugerToolkit");
+        }
+        else if (item.Title == "ZMUGUIPro")
+        {
+            Application.OpenURL("https://github.com/ZMteacher/ZMUGUIPro");
+        }
+        else if (item.Title == "更多功能")
+        {
+            Application.OpenURL("https://www.yxtown.com/user/38633b977fadc0db8e56483c8ee365a2cafbe96b");
+        }
+    }
     // 包项目数据类
     private class PackageItem
     {
