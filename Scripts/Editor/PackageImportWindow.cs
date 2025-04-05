@@ -148,6 +148,7 @@ public class PackageImportWindow : EditorWindow
         {
             Debug.Log($"Clicked on {item.Title}");
             // 这里可以添加按钮点击逻辑
+            OnImportButtonClick(item);
         }
   
         GUILayout.Space(10);
@@ -170,6 +171,30 @@ public class PackageImportWindow : EditorWindow
         }
 
         EditorGUILayout.EndVertical();
+    }
+
+    private void OnImportButtonClick(PackageItem item)
+    {
+        if (item.Title == "UI框架 ZMUIFrameWork")
+        {
+            AssetDatabase.ImportPackage($"{m_PackagePath}/ZMUI.unitypackage", true);
+        }
+        else if (item.Title == "资源热更框架 ZMAsset")
+        {
+            
+        }
+        else if (item.Title == "游戏框架 DMVC")
+        {
+            
+        }
+        else if (item.Title == "日志插件 DebugerTookit")
+        {
+            AssetDatabase.ImportPackage($"{m_PackagePath}/ZM UnityDebuger.unitypackage", true);
+        }
+        else if (item.Title == "ZMUGUIPro")
+        {
+            
+        }
     }
 
     // 包项目数据类
